@@ -1,0 +1,38 @@
+﻿@model DuLichWeb.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h4>Đăng Nhập</h4>
+<hr />
+<div class="row" style="width: 100%;">
+    <div class="col-md-4" style="margin: auto auto auto auto;">
+        <form asp-action="Login" asp-controller="TaiKhoan" method="post" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" name="UserEmail" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPass" class="control-label"></label>
+                <input asp-for="UserPass" class="form-control" name="UserPass"/>
+                <span asp-validation-for="UserPass" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <input type="submit" value="Đăng Nhập" class="btn btn-success" style="margin-top: 12px;" />
+                <a href="/TaiKhoan/Signup" style="margin-top: 12px; text-decoration: auto">Đăng Kí Tài Khoản Mới</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home" style="margin-top: 24px;">Trở về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

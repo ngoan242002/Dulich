@@ -1,0 +1,63 @@
+﻿@model DuLichWeb.Models.BaiDang
+
+@{
+    ViewData["Title"] = "XemTour";
+}
+
+
+<div>
+    <h4>@Html.DisplayFor(model => model.TieuDe)</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UrlImage)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@Model.UrlImage" width=300 height=200 />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DiaDiem)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DiaDiem)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayBatDau)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayBatDau)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayKetThuc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayKetThuc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GiaTour)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GiaTour)
+        </dd>
+
+        <dt class="col-sm-2">
+            Số điện thoại chủ tour:
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var sdt = new DuLichContext().TaiKhoans.Find(Model.Uemail)!.UserPhone;
+            }
+            @sdt
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Trở về</a>
+</div>

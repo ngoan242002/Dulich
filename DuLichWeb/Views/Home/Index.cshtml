@@ -1,0 +1,47 @@
+﻿@model List<DuLichWeb.Models.BaiDang>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/css/home.css" />
+<div class="my-home">
+    <div class="search-view">
+        <form class="search-form" asp-action="Search" asp-controller="Home" method="post">
+            <input type="search" name="search" id="search" placeholder="Tìm kiếm ở đây" class="search-data" />
+            <input type="submit" value="Tìm" />
+        </form>
+        @if (UserAccount.Instance().taiKhoan != null)
+        {
+            <a class="btn btn-info" href="@Url.Action("XemSau", "TaiKhoan")">Xem sau</a>
+        }
+
+    </div>
+    <div class="title-page">
+        <p>DU LỊCH ĐỂ TẬN HƯỞNG</p>
+    </div>
+    <div class="line-horizontal"></div>
+    <div class="list-grid-view">
+        @{
+            foreach (var item in Model)
+            {
+                <div class="item-view">
+                    <div class="item-contain-img">
+                        <img src="@item.UrlImage" class="item-img" width=200 height=150 />
+                    </div>
+
+                    <a href="@Url.Action("XemTour", "Home", new {id = item.BaiDangId})"><label class="title-item">@item.TieuDe</label></a>
+                    <label class="subtitle-item">Địa điểm: @item.DiaDiem</label>
+                    <label class="subtitle-item">Giá: @item.GiaTour VND </label>
+                    <label class="subtitle-item">Thời gian: @item.NgayBatDau.ToString("dd/MM/yyyy") - @item.NgayKetThuc.ToString("dd/MM/yyyy")</label>
+                    <div class="options-item">
+                        <a class="btn btn-info" href="@Url.Action("Book", "BaiDang", new { id = item.BaiDangId })">Đặt ngay</a>
+                        <a class="btn btn-info" href="@Url.Action("AddCheckLate", "BaiDang", new { id = item.BaiDangId })">Xem sau</a>
+                    </div>
+                </div>
+
+            }
+        }
+        
+    </div>
+</div>
+

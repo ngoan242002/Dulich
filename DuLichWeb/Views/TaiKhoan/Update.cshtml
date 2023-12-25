@@ -1,0 +1,53 @@
+﻿@model DuLichWeb.Models.BaiDang
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<link rel="stylesheet" href="~/css/adview.css" />
+<h4>Sửa bài đăng</h4>
+<hr />
+<form class="form-group-item-parent" asp-action="Update">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="BaiDangId" />
+    <div class="form-group-item">
+        <label asp-for="UrlImage" class="control-label"></label>
+        <input asp-for="UrlImage" class="form-control" />
+        <span asp-validation-for="UrlImage" class="text-danger"></span>
+    </div>
+    <div class="form-group-item">
+        <label asp-for="TieuDe" class="control-label"></label>
+        <input asp-for="TieuDe" class="form-control" />
+        <span asp-validation-for="TieuDe" class="text-danger"></span>
+    </div>
+    <div class="form-group-item">
+        <label asp-for="DiaDiem" class="control-label"></label>
+        <input asp-for="DiaDiem" class="form-control" />
+        <span asp-validation-for="DiaDiem" class="text-danger"></span>
+    </div>
+    <div class="form-group-item">
+        <label asp-for="NgayBatDau" class="control-label"></label>
+        <input asp-for="NgayBatDau" class="form-control" />
+        <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+    </div>
+    <div class="form-group-item">
+        <label asp-for="NgayKetThuc" class="control-label"></label>
+        <input asp-for="NgayKetThuc" class="form-control" />
+        <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+    </div>
+    <div class="form-group-item">
+        <label asp-for="GiaTour" class="control-label"></label>
+        <input asp-for="GiaTour" class="form-control" type="number" />
+        <span asp-validation-for="GiaTour" class="text-danger"></span>
+    </div>
+    <div class="form-group-item">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+<div>
+    <a asp-action="Index"> < Trở về </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

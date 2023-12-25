@@ -1,0 +1,47 @@
+﻿@model DuLichWeb.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Signup";
+}
+
+
+<h4>Đăng Kí</h4>
+<hr />
+<div class="row" style="width: 100%;">
+    <div class="col-md-4" style="margin: auto auto auto auto;">
+        <form asp-action="Signup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPass" class="control-label"></label>
+                <input asp-for="UserPass" class="form-control" />
+                <span asp-validation-for="UserPass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPhone" class="control-label"></label>
+                <input asp-for="UserPhone" type="number" class="form-control" />
+                <span asp-validation-for="UserPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; align-items:center; margin: 12px auto auto auto;">
+                <input type="submit" value="Đăng Kí" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Login" asp-controller="TaiKhoan">Trở Về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
